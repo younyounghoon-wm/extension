@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "hoon-extension",
+  "version": "1.0",
+  "description": "hoon first extension ss",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "hoon_icon.png"
+  }
+}
