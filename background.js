@@ -5,9 +5,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   chrome.notifications.create(
     {
       type: "basic",
-      iconUrl: "images/hoon_icon.png",
+      iconUrl: "images/turi.png",
       title: "그룹웨어 푸시 알리미",
-      message: "새로운 게시물이 등록됐어요.",
+      message: "새로운 게시물이 등록됐어요!",
     },
     () => {}
   );
