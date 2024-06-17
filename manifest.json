@@ -2,9 +2,21 @@
   "manifest_version": 3,
   "name": "hoon-extension",
   "version": "1.0",
-  "description": "hoon first extension ss",
+  "description": "hoon first extension sssㄴ",
   "action": {
     "default_popup": "index.html",
-    "default_icon": "hoon_icon.png"
-  }
+    "default_title": "hoon",
+    "default_icon": "./images/hoon_icon.png"
+  },
+  "background": {
+    "service_worker": "./background.js",
+    "type": "module"
+  },
+  "permissions": ["notifications"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./scripts/content.js"]
+    }
+  ]
 }
