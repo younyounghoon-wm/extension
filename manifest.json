@@ -12,11 +12,12 @@
     "service_worker": "./background.js",
     "type": "module"
   },
-  "permissions": ["notifications"],
+  "permissions": ["notifications", "storage"],
   "content_scripts": [
     {
       "matches": ["*://gw.wemade.com/*", "http://127.0.0.1:5500/*"],
       "js": ["./scripts/content.js"]
     }
-  ]
+  ],
+  "options_page": "options.html"
 }
