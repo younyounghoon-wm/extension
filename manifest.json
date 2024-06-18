@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "hoon-extension",
   "version": "1.0",
-  "description": "hoon first extension sssㄴ",
+  "description": "new post alaram extension",
   "action": {
     "default_popup": "index.html",
     "default_title": "hoon",
@@ -15,7 +15,7 @@
   "permissions": ["notifications"],
   "content_scripts": [
     {
-      "matches": ["*://gw.wemade.com/"],
+      "matches": ["*://gw.wemade.com/*"],
       "js": ["./scripts/content.js"]
     }
   ]

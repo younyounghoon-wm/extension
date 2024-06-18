@@ -11,12 +11,14 @@ function haveNewPost(elements) {
 }
 
 const REFRESH_TIME = 1000 * 60 * 5;
+
 const DOM_SELECT_TIME = 1000 * 3;
 
 // 일정 주기마다 페이지 새로고침
 setInterval(refreshPage, REFRESH_TIME); // 5분마다 새로고침 (300000 밀리초)
 
 setTimeout(() => {
+  console.log("DOM_SELECT_TIME");
   const $recentPosts = document
     .getElementById("mCSB_5_container")
     .querySelectorAll("ul > li");
