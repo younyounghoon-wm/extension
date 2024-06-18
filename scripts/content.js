@@ -1,17 +1,10 @@
 console.log("content script start");
 
-// 페이지 새로고침 함수
 function refreshPage() {
   location.reload();
 }
 
-// 새로운 게시물이 있으면 className에 new가 추가되고 있음
-function haveNewPost(elements) {
-  return Array.from(elements).some((item) => item.classList.contains("new"));
-}
-
 const REFRESH_TIME = 1000 * 60 * 5;
-
 const DOM_SELECT_TIME = 1000 * 3;
 
 // 일정 주기마다 페이지 새로고침
@@ -19,6 +12,7 @@ setInterval(refreshPage, REFRESH_TIME); // 5분마다 새로고침 (300000 밀�
 
 setTimeout(() => {
   console.log("DOM_SELECT_TIME");
+
   const $recentPosts = document
     .getElementById("mCSB_5_container")
     .querySelectorAll("ul > li");
@@ -28,7 +22,18 @@ setTimeout(() => {
     .getElementById("mCSB_6_container")
     .querySelectorAll("ul > li");
 
-  if (haveNewPost($recentPosts) || haveNewPost($wemadeNews)) {
-    chrome.runtime.sendMessage({ key: "new_post" });
+  const posts = [...$recentPosts, ...$wemadeNews];
+  const $newPosts = posts.filter((post) => post.classList.contains("new"));
+
+  // 추가 조건들이 들어갈수 있음
+  if ($newPosts.length === 0) {
+    return;
   }
+
+  const formattedPosts = $newPosts.map((post) => {
+    const title = post.innerText.split("\n")[0];
+    return { title };
+  });
+
+  chrome.runtime.sendMessage({ key: "new_posts", payload: formattedPosts });
 }, DOM_SELECT_TIME);
