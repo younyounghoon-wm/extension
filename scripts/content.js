@@ -4,8 +4,7 @@ function refreshPage() {
   location.reload();
 }
 
-// const REFRESH_TIME = 1000 * 60 * 5;
-const REFRESH_TIME = 1000 * 13;
+const REFRESH_TIME = 1000 * 60 * 5;
 const DOM_SELECT_TIME = 1000 * 3;
 
 // 일정 주기마다 페이지 새로고침
